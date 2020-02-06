@@ -2,19 +2,25 @@
 
 {% block content %}
 
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <a class="btn btn-primary" href="{% url 'new_sortition' %}">Novo Sorteio</a>
+        </div>
+    </div>
+
     {% for sortition in sortitions %}
-        <div class="col-4 sortition">
+        <div class="col-4 float-left sortition">
             <div class="card">
-                <div class="card-header">
-                    {{ sortition }}
+                <div class="card-header text-center">
+                    <strong>{{ sortition }}</strong>
                 </div>
-                <div class="card-body">
-                    {% for team in sortition.team %}
-                        <p>{{ team }}</p>
-                        <div class="col-6">
-                            <ul>
-                                {% for player in team.players %}
-                                    <li>{{ player }}</li>
+                <div class="card-body p-1" style="font-size: 12px;">
+                    {% for team in sortition.teams.all %}
+                        <div class="col-6 float-left p-1">
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-primary"><strong>{{ team }}</strong></li>
+                                {% for player in team.players.all|dictsort:"position" %}
+                                    <li class="list-group-item">{{ player }}</li>
                                 {% endfor %}
                             </ul>
                         </div>

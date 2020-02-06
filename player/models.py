@@ -18,7 +18,7 @@ class TeamModel(models.Model):
 
 class PlayerModel(models.Model):
     name = models.CharField(max_length=100)
-    position = models.CharField(max_length=25)
+    position = models.IntegerField(choices=[(0, 'Goleiro'), (1, 'Zagueiro'), (2, 'Lateral'), (3, 'Meio Campo'), (4, 'Atacante')])
     importance = models.IntegerField()
 
     def __str__(self):

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load my_tags %}
+
+{% block content %}
+    <a class="btn btn-primary btn-sm" href="{% url 'index' %}">Novo Jogador</a>
+    <div class="col-6 float-right text-right">
+        <p>Jogadores Selecionados: <span id="countSelected" class="font-weight-bold text-primary">0</span></p>
+    </div>
+    <table class="table table-sm table-striped mt-2">
+        <thead>
+            <tr class="table-active">
+                <th></th>
+                <th>Nome</th>
+                <th>Posição</th>
+                <th>Nota</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players %}
+                <tr>
+                    <td><input type="checkbox" value=""></td>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.position|importance_name }}</td>
+                    <td>{{ player.importance }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <button class="btn btn-primary mr-3" id="btnSortition">Sortear</button>
+            <a class="btn btn-secondary" href="{% url 'index' %}">Voltar</a>
+        </div>
+    </div>
+            
+{% endblock %}
