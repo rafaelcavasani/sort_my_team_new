@@ -17,6 +17,3 @@ class SortitionView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['players'] = PlayerModel.objects.all().order_by('position')
         return context
-
-def sort(request):
-    

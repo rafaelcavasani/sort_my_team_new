@@ -1,37 +1,34 @@
-$(document).ready(function() {
+const btnSortition = document.getElementById('btnSortition');
+const onClickBtnSortition = () => {
+    let list = [];
+    const checkboxs = document.getElementsByTagName('input[type=checkbox]');
+    checkboxs.forEach(element => {
+        
+    });
+    $('input[type=checkbox]').each(() => {
+        if ($(this).is(':checked')) {
+            const name = $(this).parent().parent().find('td').eq(1).text();
+            const position = $(this).parent().parent().find('td').eq(2).text();
+            const importance = $(this).parent().parent().find('td').eq(3).text();
+            const player = {
+                name: name,
+                position: position,
+                importance: importance
+            }
+            list.push(player);
+        }
+    });
+};
+btnSortition.addEventListener('click', onClickBtnSortition);
 
-    $('input[type=checkbox]').on('change', function() {
-        var check = 0;
-        $('input[type=checkbox]').each(function() {
-            if ($(this).is(':checked')) check++;
-        });
-        $('#countSelected').text(check);
+
+const checkboxs = document.getElementsByTagName('input[type=checkbox]');
+checkboxs.addEventListener('change', () => {
+    let check = 0;
+    checkboxs.forEach(element => {
+        if (element.checked) check++;
     });
 
-    $('#btnSortition').click(function() {
-        var list = [];
-        $('input[type=checkbox]').each(function() {
-            if ($(this).is(':checked')) {
-                var name = $(this).parent().parent().find('td').eq(1).text();
-                var position = $(this).parent().parent().find('td').eq(2).text();
-                var importance = $(this).parent().parent().find('td').eq(3).text();
-                var player = {
-                    name: name,
-                    position: position,
-                    importance: importance
-                }
-                list.push(player);
-            }
-        });
-        $.ajax({
-            url: '/players/sortition',
-            method: 'GET',
-            dataType: 'json',
-            data: list,
-            success: function (data) {
-                console.log(data);
-            }
-        });
-    });
-
+    const countSelected = document.getElementById('countSelected');
+    countSelected.innerHTML = countSelected;
 });
