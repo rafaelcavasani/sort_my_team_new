@@ -9,7 +9,7 @@
     <table class="table table-sm table-striped mt-2">
         <thead>
             <tr class="table-active">
-                <th></th>
+                <th><input type="checkbox" value="" id="checkall"></th>
                 <th>Nome</th>
                 <th>Posição</th>
                 <th>Nota</th>
@@ -18,7 +18,7 @@
         <tbody>
             {% for player in players %}
                 <tr>
-                    <td><input type="checkbox" value=""></td>
+                    <td><input type="checkbox" value="" class="checkbox"></td>
                     <td>{{ player.name }}</td>
                     <td>{{ player.position|importance_name }}</td>
                     <td>{{ player.importance }}</td>

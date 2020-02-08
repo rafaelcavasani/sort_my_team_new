@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/sortition.js' %}"></script>
     <title>Sort My Team</title>
 </head>
 <body>
 
     <div class="container my-5">
         {% block content %}
-
+        
         {% endblock %}
     </div>
-
+    
+    <script type="text/javascript" src="{% static 'js/sortition.js' %}"></script>
 </body>
 </html>
