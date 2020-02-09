@@ -3,7 +3,7 @@
 
 {% block content %}
     <a class="btn btn-primary btn-sm" href="{% url 'index' %}">Novo Jogador</a>
-    <div class="col-6 float-right text-right">
+    <div class="col-6 float-right text-right p-0">
         <p>Jogadores Selecionados: <span id="countSelected" class="font-weight-bold text-primary">0</span></p>
     </div>
     <table class="table table-sm table-striped mt-2">
@@ -29,8 +29,8 @@
 
     <div class="row mt-5">
         <div class="col-12 text-center">
-            <button class="btn btn-primary mr-3" id="btnSortition">Sortear</button>
-            <a class="btn btn-secondary" href="{% url 'index' %}">Voltar</a>
+            <button class="btn btn-primary btn-sm mr-3" id="btnSortition">Sortear</button>
+            <a class="btn btn-secondary btn-sm" href="{% url 'index' %}">Voltar</a>
         </div>
     </div>
             

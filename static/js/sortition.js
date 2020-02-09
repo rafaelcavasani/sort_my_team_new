@@ -25,13 +25,20 @@ const onClickBtnSortition = () => {
     checkPlayersToSort(list);
 }
 
-
-let check = 0;
 const checkboxChanged = (element) => {
-    if (element.target.checked) check++;
-    else check--;
+    let checked = 0;
+    const checkboxs = document.getElementsByClassName('checkbox');
+    for (let i = 0; i < checkboxs.length; i++) {
+        if (checkboxs[i].checked) 
+            checked++;
+    }
+    if (checked == 0) {
+        const checkAll = document.getElementById('checkall');
+        checkAll.checked = false;
+    }
+
     const countSelected = document.getElementById('countSelected');
-    countSelected.innerHTML = check;
+    countSelected.innerHTML = checked;
 }
 
 const checkAll = () => {
@@ -40,6 +47,10 @@ const checkAll = () => {
     for (let i = 0; i < checkboxs.length; i++) {
         checkboxs[i].checked = checkbox.checked;
     }
+    const countSelected = document.getElementById('countSelected');
+    const checkboxsCount = document.getElementsByClassName('checkbox').length;
+    if (checkbox.checked) countSelected.innerHTML = checkboxsCount;
+    else countSelected.innerHTML = '0';
 }
 
 function checkPlayersToSort(list) {
@@ -52,13 +63,16 @@ function checkPlayersToSort(list) {
         alert('Você deve selecionar ao menos 6 jogadores para realizar o sorteio.');
         return false;
     }
+    if (list.length % 2 !== 0) {
+        alert('Você deve selecionar um número par de jogadores.');
+        return false;
+    }
     goalkeepers = list.filter((a) => a.position == 0);
     if (goalkeepers.length != 2) {
         alert('Você deve selecionar 2 goleiros para realizar o sorteio.');
         return false;
     }
-
-    console.log(goalkeepers);
+    window.location = '/';
 }
 
 (function() {
